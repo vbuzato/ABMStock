@@ -1,7 +1,7 @@
 @keyframes scaling{
   0%, 100%{
     transform: scale(0.2);
-    background-color: #30FFB7;
+    background-color: #146397;
   }
   40%{
     transform: scale(1);
@@ -9,7 +9,7 @@
   }
   50%{
     transform: scale(1);
-    background-color: #0761FF;
+    background-color: #0772ff;
   }
 }
 

@@ -7,8 +7,8 @@ export default function FormStock() {
   const [userId, setUserId] = useState('');
   const [quantity, setQuantity] = useState('');
   const [price, setPrice] = useState('');
-  const [product, setProduct] = useState('');
-  const [client, setClient] = useState('');
+  const [product, setProduct] = useState({ name: '', brand: '' });
+  const [client, setClient] = useState({ name: '', email: '' });
   const [active, setActive] = useState(false);
   const [preventLoop, setPreventLoop] = useState(true);
 
@@ -74,9 +74,9 @@ export default function FormStock() {
             <input
               id="product"
               className="form-control"
-              value={product}
+              value={product.name}
               type="text"
-              onChange={(e) => setProduct(e.target.value)}
+              onChange={(e) => setProduct({ ...product, name: e.target.value })}
               required
             />
           </Form.Label>
@@ -96,14 +96,40 @@ export default function FormStock() {
           </Form.Label>
         </Col>
         <Col sm="6">
-          <Form.Label htmlFor="client" className="w-100">
-            Client
+          <Form.Label htmlFor="productBrand" className="w-100">
+            Product brand
             <input
-              id="client"
-              value={client}
+              id="productBrand"
+              value={product.brand}
               type="text"
               className="form-control"
-              onChange={(e) => setClient(e.target.value)}
+              onChange={(e) => setProduct({ ...product, brand: e.target.value })}
+              required
+            />
+          </Form.Label>
+        </Col>
+        <Col sm="6">
+          <Form.Label htmlFor="client" className="w-100">
+            Client name
+            <input
+              id="client"
+              value={client.name}
+              type="text"
+              className="form-control"
+              onChange={(e) => setClient({ ...client, name: e.target.value })}
+              required
+            />
+          </Form.Label>
+        </Col>
+        <Col sm="6">
+          <Form.Label htmlFor="clientContact" className="w-100">
+            Client email
+            <input
+              id="clientContact"
+              value={client.email}
+              type="email"
+              className="form-control"
+              onChange={(e) => setClient({ ...client, email: e.target.value })}
               required
             />
           </Form.Label>

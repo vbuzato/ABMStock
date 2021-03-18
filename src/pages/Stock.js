@@ -39,14 +39,19 @@ export default function Stock() {
     }
 
     return (
-      <Table striped bordered hover>
+      <Table striped bordered hover className="font-size-table">
         <thead>
           <tr>
-            {Object.keys(stock[0]).map((eachKey) => (
-              <th key={eachKey} className="text-center">{eachKey}</th>
-            ))}
-            <th className="text-center">Edit</th>
-            <th className="text-center">Delete</th>
+            <th>id</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Product name</th>
+            <th>Product brand</th>
+            <th>Client name</th>
+            <th>Client email</th>
+            <th>Active</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -55,19 +60,21 @@ export default function Stock() {
             return (
               <tr key={id}>
                 <td>{id}</td>
-                <td className="text-center">{item.quantity}</td>
-                <td className="text-center">{`$ ${item.price}`}</td>
-                <td>{item.product}</td>
-                <td>{item.client}</td>
+                <td>{item.quantity}</td>
+                <td>{`$ ${item.price}`}</td>
+                <td>{item.product.name}</td>
+                <td>{item.product.brand}</td>
+                <td>{item.client.name}</td>
+                <td>{item.client.email}</td>
                 <td>
                   {item.active
                     ? <AiOutlineCheckCircle size="25" fill="green" />
                     : <BsXCircle size="22" fill="red" />}
                 </td>
-                <td className="text-center">
+                <td>
                   <Link className="btn btn-warning" to={`/item/${id}`}>Select</Link>
                 </td>
-                <td className="text-center">
+                <td>
                   <button className="btn btn-danger" type="button" onClick={() => onDelete(id)}>Delete</button>
                 </td>
               </tr>
@@ -79,7 +86,7 @@ export default function Stock() {
   };
 
   return (
-    <Container>
+    <Container className="">
       <h1 className="pt-3">ABM Stock</h1>
       <div className="nav justify-content-end">
         <Link to="/item" className="btn btn-primary m-3">Add new Item</Link>

@@ -1,0 +1,17 @@
+import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import Stock from './pages/Stock';
+import FormStock from './pages/FormStock';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+function App() {
+  return (
+    <Switch>
+      <Route exact path="/" component={Stock} />
+      <Route path="/item/:id" component={FormStock} />
+      <Route path="/item" component={FormStock} />
+    </Switch>
+  );
+}
+
+export default App;

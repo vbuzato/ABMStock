@@ -2,6 +2,7 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Stock from './pages/Stock';
 import FormStock from './pages/FormStock';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

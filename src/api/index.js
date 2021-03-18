@@ -1,7 +1,9 @@
-const idCrudCrud = '54d6a8e33a8c48efab4114a141a1ce76';
+const idCrudCrud = '63d87cf0d36449d6b000eeeb437bf893';
 const DBNname = 'Stock';
 
-export async function insertProduct(body) {
+const onApiError = 'crudcrud.com issues or unexpected token';
+
+const insertProduct = async (body) => {
   const options = {
     headers: { 'content-type': 'application/json' },
     method: 'POST',
@@ -9,36 +11,36 @@ export async function insertProduct(body) {
   };
   const fetchResult = await fetch(`/${idCrudCrud}/${DBNname}`, options)
     .then((newUser) => newUser.json())
-    .catch((err) => (err.message));
+    .catch(() => onApiError);
 
   return fetchResult;
-}
+};
 
-export async function getAllItems() {
+const getAllItems = async () => {
   const options = {
     headers: { 'content-type': 'application/json' },
     method: 'GET',
   };
   const fetchResult = await fetch(`/${idCrudCrud}/${DBNname}`, options)
     .then((data) => data.json())
-    .catch((err) => (err.message));
+    .catch(() => onApiError);
 
   return fetchResult;
-}
+};
 
-export async function getItemById(id) {
+const getItemById = async (id) => {
   const options = {
     headers: { 'content-type': 'application/json' },
     method: 'GET',
   };
   const itemById = await fetch(`/${idCrudCrud}/${DBNname}/${id}`, options)
     .then((data) => data.json())
-    .catch((err) => (err.message));
+    .catch(() => onApiError);
 
   return itemById;
-}
+};
 
-export async function updateItemById(id, body) {
+const updateItemById = async (id, body) => {
   const options = {
     headers: { 'content-type': 'application/json' },
     method: 'PUT',
@@ -46,19 +48,28 @@ export async function updateItemById(id, body) {
   };
   const fetchResult = await fetch(`/${idCrudCrud}/${DBNname}/${id}`, options)
     .then((newUser) => newUser.json())
-    .catch((err) => (err.message));
+    .catch(() => onApiError);
 
   return fetchResult;
-}
+};
 
-export async function deleteItemById(id) {
+const deleteItemById = async (id) => {
   const options = {
     headers: { 'content-type': 'application/json' },
     method: 'DELETE',
   };
   const itemById = await fetch(`/${idCrudCrud}/${DBNname}/${id}`, options)
     .then((data) => data.json())
-    .catch((err) => (err.message));
+    .catch(() => onApiError);
 
   return itemById;
-}
+};
+
+export {
+  onApiError,
+  insertProduct,
+  getAllItems,
+  getItemById,
+  updateItemById,
+  deleteItemById,
+};
